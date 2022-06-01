@@ -13,22 +13,22 @@ cron.schedule('*/30 * * * * *',async ()=>{
     console.log('Cron started');
     /**
      * I need to send emails
-     * 
+     *
      * 1. Get the list of all the notifications to be sent
      * 2. Send email for each notifications
      */
 
     const notifications = await Notification.find({
         sentStatus : constants.sentStatuses.unsent
-    }) 
+    })
 
-    
+
 
 
     notifications.forEach( notification => {
         console.log(notification.recepientEmails);
         const mailData = {
-            from : 'crm-notification-service@gmail.com',
+            from : 'vamsipakki22@gmail.com',
             to : notification.recepientEmails,
             subject : notification.subject,
             text : notification.content
@@ -48,7 +48,6 @@ cron.schedule('*/30 * * * * *',async ()=>{
             }
         })
 
-        
+
     })
 })
-
